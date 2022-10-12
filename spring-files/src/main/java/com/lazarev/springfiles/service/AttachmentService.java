@@ -31,8 +31,7 @@ public class AttachmentService {
         attachment = attachmentRepository.save(attachment);
 
         return new AttachmentUploadResponse(
-                file.getOriginalFilename(),
-                attachment.getId(),
+                file.getOriginalFilename(), attachment.getId(),
                 bytesToMegabytes(file.getSize()));
     }
 
