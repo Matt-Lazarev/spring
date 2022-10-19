@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping
-    //@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    public String getStartMessage(Authentication a){
-        return "GET Hello! " + a.getAuthorities() ;
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    public String getStartMessage(){
+        return "GET Hello!";
     }
 
     @PostMapping

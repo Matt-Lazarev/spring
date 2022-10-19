@@ -1,9 +1,11 @@
 package com.lazarev.springtransactional.service;
 
+import com.lazarev.springtransactional.dto.ProductOrderDto;
 import com.lazarev.springtransactional.entity.Product;
 import com.lazarev.springtransactional.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
@@ -23,6 +25,17 @@ public class ProductService {
             product.setName(product.getName().toUpperCase());
             productRepository.save(product);
         }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Product saveProduct(ProductOrderDto dto){
+        Product product = new Product(null, dto.name(), dto.price());
+        return productRepository.save(product);
+    }
+
+    @Transactional
+    public void updateProductNameById(String name, Long id){
+        productRepository.updateProductNameById(name, id);
     }
 }
 

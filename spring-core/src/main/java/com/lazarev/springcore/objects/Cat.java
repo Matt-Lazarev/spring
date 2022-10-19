@@ -1,12 +1,13 @@
 package com.lazarev.springcore.objects;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component("pet")
-public class Cat {
+@Component
+public class Cat extends Pet{
     public void say(){
         System.out.println("Meow");
     }
