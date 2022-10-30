@@ -1,6 +1,12 @@
 package com.lazarev.hibernate.config;
 
 import com.lazarev.hibernate.entity.Product;
+import com.lazarev.hibernate.relations.manytomany.Subject;
+import com.lazarev.hibernate.relations.manytomany.Teacher;
+import com.lazarev.hibernate.relations.onetomany.Department;
+import com.lazarev.hibernate.relations.onetomany.Employee;
+import com.lazarev.hibernate.relations.onetoone.Passport;
+import com.lazarev.hibernate.relations.onetoone.Person;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -37,7 +43,7 @@ public class AppConfiguration {
         Configuration configuration = new Configuration();
 
         Properties properties = new Properties();
-        properties.put(Environment.URL, "jdbc:mysql://localhost:3306/shop");
+        properties.put(Environment.URL, "jdbc:mysql://localhost:3306/lessonhibernate");
         properties.put(Environment.USER, "root");
         properties.put(Environment.PASS, "rootroot");
         properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
@@ -49,6 +55,12 @@ public class AppConfiguration {
         properties.put(Environment.GLOBALLY_QUOTED_IDENTIFIERS, "true");
         configuration.setProperties(properties);
         configuration.addAnnotatedClass(Product.class);
+        configuration.addAnnotatedClass(Person.class);
+        configuration.addAnnotatedClass(Passport.class);
+        configuration.addAnnotatedClass(Employee.class);
+        configuration.addAnnotatedClass(Department.class);
+        configuration.addAnnotatedClass(Teacher.class);
+        configuration.addAnnotatedClass(Subject.class);
 
         return configuration;
     }
