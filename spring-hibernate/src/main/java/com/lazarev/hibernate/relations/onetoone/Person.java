@@ -1,6 +1,8 @@
 package com.lazarev.hibernate.relations.onetoone;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import static jakarta.persistence.GenerationType.*;
 
@@ -13,9 +15,7 @@ public class Person {
     private Integer id;
     private String name;
 
-    @OneToOne(cascade = CascadeType.PERSIST,
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
     private Passport passport;
 

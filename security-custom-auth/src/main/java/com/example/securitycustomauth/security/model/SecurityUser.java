@@ -2,7 +2,6 @@ package com.example.securitycustomauth.security.model;
 
 import com.example.securitycustomauth.entity.ApplicationUser;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,7 +9,6 @@ import java.util.Collection;
 
 import java.util.stream.Collectors;
 
-@ToString
 @RequiredArgsConstructor
 public class SecurityUser implements UserDetails {
     private final ApplicationUser applicationUser;

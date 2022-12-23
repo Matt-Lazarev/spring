@@ -29,7 +29,7 @@ public class ApplicationUser {
     private String password;
     private String email;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name = "user_id",

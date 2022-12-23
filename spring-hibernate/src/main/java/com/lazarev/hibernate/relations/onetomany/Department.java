@@ -46,6 +46,9 @@ public class Department {
     }
 
     public void setEmployees(List<Employee> employees) {
+        for(Employee employee : employees){
+            employee.setDepartment(this);
+        }
         this.employees = employees;
     }
 }

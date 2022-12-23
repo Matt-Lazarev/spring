@@ -87,19 +87,26 @@ public class ApplicationMain {
 //        Subject s1 = new Subject(null, "Math");
 //        Subject s2 = new Subject(null, "History");
 //        Subject s3 = new Subject(null, "Informatics");
-//
-//        s1.setTeachers(List.of(t1, t2));
-//        s2.setTeachers(List.of(t1, t2));
-//        s2.setTeachers(List.of(t2));
+
+//        s1.setTeachers(List.of(t1,t2));
+//        s2.setTeachers(List.of(t1));
+//        s3.setTeachers(List.of(t2));
+
+//        s1.addTeacher(t1);
+//        s1.addTeacher(t2);
+//        s2.addTeacher(t1);
+//        s3.addTeacher(t2);
 //
 //        session.persist(s1);
 //        session.persist(s2);
 //        session.persist(s3);
 
-        /* Eager */
-        Person person = session.get(Person.class, 2);
-        System.out.println(person);
-        System.out.println(person.getPassport());
+        /* Eager Lazy */
+        Passport passport = session.get(Passport.class, 1);
+        System.out.println(passport.getSeries());
+
+//        Person person = session.get(Person.class, 1);
+//        System.out.println(person.getName());
 
         session.getTransaction().commit();
         context.close();

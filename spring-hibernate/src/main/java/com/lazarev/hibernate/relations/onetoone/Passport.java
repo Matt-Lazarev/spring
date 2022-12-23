@@ -1,9 +1,10 @@
 package com.lazarev.hibernate.relations.onetoone;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import static jakarta.persistence.GenerationType.*;
-@SuppressWarnings("all")
 @Entity
 @Table(name = "passports")
 public class Passport {
@@ -17,6 +18,7 @@ public class Passport {
     @OneToOne(mappedBy = "passport",
             cascade = CascadeType.PERSIST,
             fetch = FetchType.LAZY)
+    @LazyToOne(value = LazyToOneOption.PROXY)
     private Person person;
 
     public Passport(){}
@@ -56,6 +58,7 @@ public class Passport {
     }
 
     public void setPerson(Person person) {
+        person.setPassport(this);
         this.person = person;
     }
 

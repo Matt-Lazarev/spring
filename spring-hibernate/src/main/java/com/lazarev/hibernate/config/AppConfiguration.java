@@ -14,6 +14,7 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
 
 import java.util.Properties;
 
@@ -21,13 +22,14 @@ import java.util.Properties;
 public class AppConfiguration {
 
     /*XML Configuration */
-//    @Bean
-//    public SessionFactory sessionFactory(){
-//        return new Configuration()
-//                .configure("hibernate-config.xml")
-//                .addAnnotatedClass(Product.class)
-//                .buildSessionFactory();
-//    }
+
+    @Bean
+    public SessionFactory sessionFactory(){
+        return new Configuration()
+                .configure("hibernate-config.xml")
+                .addAnnotatedClass(Product.class)
+                .buildSessionFactory();
+    }
 
 
     /*Java Code configuration*/
@@ -38,6 +40,7 @@ public class AppConfiguration {
         return configuration.buildSessionFactory(serviceRegistry);
     }
 
+    @Primary
     @Bean
     public Configuration configuration(){
         Configuration configuration = new Configuration();
@@ -51,7 +54,7 @@ public class AppConfiguration {
         properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         properties.put(Environment.HBM2DDL_AUTO, "update");
         properties.put(Environment.SHOW_SQL, "true");
-        properties.put(Environment.FORMAT_SQL, "true");
+        properties.put(Environment.FORMAT_SQL, "false");
         properties.put(Environment.GLOBALLY_QUOTED_IDENTIFIERS, "true");
         configuration.setProperties(properties);
         configuration.addAnnotatedClass(Product.class);

@@ -2,6 +2,7 @@ package com.lazarev.hibernate.relations.manytomany;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -15,7 +16,7 @@ public class Subject {
     private String name;
 
     @ManyToMany(mappedBy = "subjects", cascade = CascadeType.PERSIST)
-    private List<Teacher> teachers;
+    private List<Teacher> teachers = new ArrayList<>();
 
     public Subject(){}
 
@@ -46,5 +47,10 @@ public class Subject {
 
     public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
+    }
+
+    public void addTeacher(Teacher teacher){
+        teachers.add(teacher);
+        teacher.getSubjects().add(this);
     }
 }

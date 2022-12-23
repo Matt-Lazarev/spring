@@ -2,6 +2,7 @@ package com.lazarev.hibernate.relations.manytomany;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -24,7 +25,7 @@ public class Teacher {
             inverseJoinColumns = @JoinColumn(
                     name = "subject_id",
                     referencedColumnName = "id"))
-    private List<Subject> subjects;
+    private List<Subject> subjects = new ArrayList<>();
 
     public Teacher() {
     }
