@@ -1,0 +1,8 @@
+feign:
+  circuitbreaker:
+    enabled: true
+
+person-service:
+  username: 'Matt'
+  password: '$2a$10$NrFyHKfwIn2mZfEH2pvdhOfSfKrbc1uYF.dq1dVB5z4dSeFgofHFC'
+

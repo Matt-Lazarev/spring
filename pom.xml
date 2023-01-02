@@ -21,10 +21,12 @@
         <module>spring-cache</module>
         <module>spring-mvc-nonboot</module>
         <module>spring-data-jpa</module>
+        <module>spring-rest</module>
         <module>security-basic</module>
         <module>security-custom-auth</module>
         <module>security-jwt</module>
         <module>kafka-basics</module>
+        <module>cloud-openfeign</module>
     </modules>
 
     <properties>
