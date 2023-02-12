@@ -25,6 +25,10 @@
         <module>security-basic</module>
         <module>security-custom-auth</module>
         <module>security-jwt</module>
+        <module>security-oauth2-authserver</module>
+        <module>security-oauth2-resource-server</module>
+        <module>security-oauth2-client</module>
+        <module>security-oauth2-keycloak-client</module>
         <module>kafka-basics</module>
         <module>cloud-openfeign</module>
     </modules>

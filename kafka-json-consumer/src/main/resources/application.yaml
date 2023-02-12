@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    template:
+      default-topic: 't_messages'
+    consumer:
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"

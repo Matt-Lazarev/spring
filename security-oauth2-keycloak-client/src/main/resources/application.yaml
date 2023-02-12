@@ -1,0 +1,32 @@
+server:
+  port: 8090
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          spring-security-keycloak-client:
+            provider: spring
+            client-name: spring-security-keycloak-client
+            client-id: spring-security-keycloak-client
+            client-secret: gGkXugUMNHXTu1xJlSCtsXnhlZXfcoNa
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8090/login/oauth2/code/spring-security-keycloak-client
+            scope: openid, profile, roles
+          admin-cli:
+            provider: keycloak
+            client-name: admin-cli
+            client-id: admin-cli
+            client-secret: JOjyrhep3ovSQgQw7Mtup64paCZWpqAd
+            authorization-grant-type: client_credentials
+            redirect-uri: http://127.0.0.1:8090/login/oauth2/code/admin-cli
+            scope: openid, profile, roles
+        provider:
+          spring:
+            issuer-uri: 'http://localhost:8181/realms/oauth-demo-realm'
+          keycloak:
+            issuer-uri: 'http://localhost:8181/realms/master'
+
+
+
