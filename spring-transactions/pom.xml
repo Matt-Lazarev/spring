@@ -8,14 +8,15 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.lazarev</groupId>
-    <artifactId>spring-transactional</artifactId>
+    <artifactId>spring-transactions</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-transactional</name>
-    <description>spring-transactional</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

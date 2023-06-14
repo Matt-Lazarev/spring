@@ -51,7 +51,6 @@ public class ParamTest {
         );
     }
 
-
     @ParameterizedTest(name = "multiple arguments provider test")
     @MethodSource("objectsArgumentProvider")
     public void test_withObjects(LocalDate p1, Calculator p2){
@@ -65,8 +64,6 @@ public class ParamTest {
                 Arguments.of(LocalDate.now(), new Calculator())
         );
     }
-
-
 }
 
 class Calculator{

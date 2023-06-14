@@ -8,11 +8,11 @@
         <version>2.7.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.example</groupId>
-    <artifactId>dto</artifactId>
+    <artifactId>spring-dto</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dto</name>
-    <description>dto</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
