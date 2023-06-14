@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    mysql:
+      jdbc-url: jdbc:mysql://localhost:3306/transactions
+      username: root
+      password: rootroot
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    postgres:
+      jdbc-url: jdbc:postgresql://localhost:5432/transactions
+      username: lazarev
+      password: root
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+
+
