@@ -39,6 +39,7 @@ public class JwtTokenVerifierFilter extends OncePerRequestFilter {
             return null;
         }
 
+
         return authorizationHeader.replace(JwtConfig.TOKEN_PREFIX, "");
     }
 }

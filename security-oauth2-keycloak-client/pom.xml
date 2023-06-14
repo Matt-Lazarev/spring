@@ -8,15 +8,16 @@
         <version>2.7.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.lazarev</groupId>
-    <artifactId>security-keycloak-client</artifactId>
+    <artifactId>security-oath2-keycloak-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security-keycloak-client</name>
-    <description>security-keycloak-client</description>
+
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -3,6 +3,7 @@ package com.example.securityjwt.security.config;
 import com.example.securityjwt.security.filter.CustomUsernamePasswordAuthFilter;
 import com.example.securityjwt.security.filter.JwtTokenVerifierFilter;
 import com.example.securityjwt.security.utils.JwtUtil;
+import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,12 +20,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
+import javax.crypto.SecretKey;
+import java.util.Base64;
+
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
+    private final JwtConfig jwtConfig;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -58,15 +63,19 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager
-                        (AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig
-                .getAuthenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig)
+            throws Exception {
+        return authConfig.getAuthenticationManager();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(10);
+    }
+
+    @Bean
+    public SecretKey secretKey(){
+        return Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtConfig.getSecret()));
     }
 }
 
