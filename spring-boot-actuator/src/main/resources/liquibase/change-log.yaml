@@ -1,0 +1,98 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matt-lazarev
+      changes:
+        - createTable:
+            tableName: employees
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: employee_pk
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: name_uq_idx
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: matt-lazarev
+      changes:
+        - modifyDataType:
+            tableName: employees
+            columnName: id
+            newDataType: int
+  - changeSet:
+      id: 3
+      author: matt-lazarev
+      changes:
+        - insert:
+            tableName: employees
+            columns:
+              - column:
+                  name: name
+                  value: Mike
+        - insert:
+            tableName: employees
+            columns:
+              - column:
+                  name: name
+                  value: Bob
+  - changeSet:
+      id: 4
+      author: matt-lazarev
+      changes:
+        - update:
+            tableName: employees
+            columns:
+              - column:
+                  name: name
+                  value: Kate
+            where: id=1
+  - changeSet:
+      id: 5
+      author: matt-lazarev
+      changes:
+        - insert:
+            tableName: employees
+            columns:
+              - column:
+                  name: name
+                  value: Mike
+        - delete:
+            tableName: employees
+            where: id=1
+  - changeSet:
+      id: 6
+      author: matt-lazarev
+      changes:
+        - addColumn:
+            tableName: employees
+            columns:
+              - column:
+                  name: email
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: email_uq_idx
+        - dropUniqueConstraint:
+            tableName: employees
+            uniqueColumns: name
+            constraintName: name_uq_idx
+  - changeSet:
+      id: 7
+      author: matt-lazarev
+      changes:
+        - insert:
+            tableName: employees
+            columns:
+              - column:
+                  name: name
+                  value: Mike
