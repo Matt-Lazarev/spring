@@ -9,6 +9,8 @@ public class ApplicationMain {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         PersonRepository bean = context.getBean(PersonRepository.class);
-        //bean.update();
+        bean.update();
+        bean.test1();
+        bean.test2();
     }
 }

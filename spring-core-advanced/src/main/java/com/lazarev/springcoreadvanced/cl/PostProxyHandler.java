@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 public class PostProxyHandler {
     private final ConfigurableListableBeanFactory factory;
 
-    @EventListener
+    @EventListener(classes = ContextRefreshedEvent.class)
     public void handlePostProxyAnnotation(ContextRefreshedEvent event) throws Exception{
         ApplicationContext context = event.getApplicationContext();
         String[] beanDefinitionNames = context.getBeanDefinitionNames();

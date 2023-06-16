@@ -8,6 +8,7 @@ import org.springframework.cglib.proxy.Proxy;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,6 +22,14 @@ public class InTransactionAnnotationBeanPostProcessor implements BeanPostProcess
         if(beanClass.isAnnotationPresent(InTransaction.class)){
             inTransactionBeans.put(beanName, beanClass);
         }
+        else {
+            boolean alLeastOneMethodHasInTransactionAnnotation = Arrays
+                    .stream(beanClass.getDeclaredMethods())
+                    .anyMatch(m -> m.isAnnotationPresent(InTransaction.class));
+            if(alLeastOneMethodHasInTransactionAnnotation){
+                inTransactionBeans.put(beanName, beanClass);
+            }
+        }
         return bean;
     }
 
@@ -32,14 +41,27 @@ public class InTransactionAnnotationBeanPostProcessor implements BeanPostProcess
             return Proxy.newProxyInstance(beanClass.getClassLoader(), beanClass.getInterfaces(), new InvocationHandler() {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    System.out.println("--Start transaction--");
-                    Object result = method.invoke(bean, args);
-                    System.out.println("--Commit transaction--");
-                    return result;
+                    boolean needTransaction = isTransactionNeeded(beanClass, method);
+                    if (needTransaction) {
+                        return executeInTransaction(method, bean, args);
+                    }
+                    return method.invoke(bean, args);
                 }
             });
         }
 
         return bean;
+    }
+
+    private Object executeInTransaction(Method proxyMethod, Object bean, Object[] args) throws Exception {
+        System.out.println("--Start transaction--");
+        Object result = proxyMethod.invoke(bean, args);
+        System.out.println("--Commit transaction--");
+        return result;
+    }
+
+    private boolean isTransactionNeeded(Class<?> beanClass, Method proxyMethod) throws Exception{
+        return beanClass.isAnnotationPresent(InTransaction.class)
+                || beanClass.getMethod(proxyMethod.getName()).isAnnotationPresent(InTransaction.class);
     }
 }
