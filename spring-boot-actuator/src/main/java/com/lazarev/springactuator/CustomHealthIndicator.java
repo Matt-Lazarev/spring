@@ -10,7 +10,6 @@ public class CustomHealthIndicator implements HealthIndicator {
 
     @Override
     public Health health() {
-
         int errorCode = 0;
         if (errorCode != 0) {
             return Health.down().withDetail("Error Code", errorCode).build();

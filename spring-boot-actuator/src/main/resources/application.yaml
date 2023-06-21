@@ -15,28 +15,3 @@ info:
     name: 'spring-actuator'
     description: 'spring boot actuator demo app'
     version: '1.0'
-
-spring:
-  liquibase:
-    change-log: 'classpath:liquibase/change-log.yaml'
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/shop_db
-    username: lazarev
-    password: root
-  jpa:
-    show-sql: true
-    generate-ddl: false
-    hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-
-springdoc:
-#  api-docs:
-#    path: /api-docs
-
-  swagger-ui:
-    operations-sorter: method
-#    path: /docs.html

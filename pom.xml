@@ -18,6 +18,7 @@
         <module>spring-dto</module>
         <module>spring-data-rest</module>
         <module>spring-test</module>
+        <module>spring-test-maven-plugins</module>
         <module>spring-transactions</module>
         <module>spring-transactions-advanced</module>
         <module>spring-cache</module>
@@ -25,8 +26,11 @@
         <module>spring-data-jpa</module>
         <module>spring-rest</module>
         <module>spring-docker</module>
+        <module>spring-swagger</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-custom-starter</module>
+        <module>spring-migrations-flyway</module>
+        <module>spring-migrations-liquibase</module>
         <module>security-basic</module>
         <module>security-custom-auth</module>
         <module>security-jwt</module>

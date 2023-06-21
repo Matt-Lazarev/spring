@@ -1,0 +1,72 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+tags:
+- name: Test Controller
+  description: V1
+paths:
+  /api/v1/test:
+    get:
+      tags:
+      - Test Controller
+      summary: Get operation
+      operationId: getTest
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetDto'
+        "400":
+          description: FAIL
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetDto'
+    post:
+      tags:
+      - Test Controller
+      summary: Post operation
+      operationId: postTest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PostDto'
+        "400":
+          description: FAIL
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PostDto'
+components:
+  schemas:
+    PostDto:
+      type: object
+      properties:
+        info:
+          type: string
+          description: Информация
+          example: info
+      description: DTO for post request
+    GetDto:
+      type: object
+      properties:
+        info:
+          type: string
+          description: Информация
+          example: info
+      description: DTO for get request
