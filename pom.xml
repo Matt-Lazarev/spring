@@ -11,6 +11,7 @@
     <modules>
         <module>spring-core</module>
         <module>spring-core-advanced</module>
+        <module>spring-aop</module>
         <module>spring-files</module>
         <module>spring-hibernate</module>
         <module>spring-validation</module>
@@ -27,6 +28,7 @@
         <module>spring-rest</module>
         <module>spring-docker</module>
         <module>spring-swagger</module>
+        <module>spring-solid</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-custom-starter</module>
         <module>spring-migrations-flyway</module>
@@ -42,6 +44,8 @@
         <module>kafka-json-consumer</module>
         <module>kafka-json-producer</module>
         <module>cloud-openfeign</module>
+        <module>postgres-streaming-replication</module>
+        <module>postgres-logical-replication</module>
     </modules>
 
     <properties>
