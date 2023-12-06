@@ -1,11 +1,14 @@
 package com.example.web.config;
 
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -16,12 +19,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @EnableWebMvc
 @ComponentScan("com.example.web")
 @PropertySource("classpath:application.properties")
-public class SpringConfig implements WebMvcConfigurer {
-    private final ApplicationContext applicationContext;
-
-    public SpringConfig(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
-    }
+public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
+    private ApplicationContext applicationContext;
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -45,5 +44,15 @@ public class SpringConfig implements WebMvcConfigurer {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
     }
 }
