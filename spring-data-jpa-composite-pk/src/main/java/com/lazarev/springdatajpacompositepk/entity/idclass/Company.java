@@ -1,6 +1,5 @@
-package com.lazarev.springdatajpa.entity.composite;
+package com.lazarev.springdatajpacompositepk.entity.idclass;
 
-import com.lazarev.springdatajpa.entity.composite.CompanyId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

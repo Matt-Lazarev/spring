@@ -1,4 +1,4 @@
-package com.lazarev.springdatajpa.entity.composite;
+package com.lazarev.springdatajpacompositepk.entity.idclass;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

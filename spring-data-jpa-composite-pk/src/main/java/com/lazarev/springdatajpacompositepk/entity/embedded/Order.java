@@ -1,6 +1,5 @@
-package com.lazarev.springdatajpa.entity.composite;
+package com.lazarev.springdatajpacompositepk.entity.embedded;
 
-import com.lazarev.springdatajpa.entity.composite.OrderId;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -13,7 +12,7 @@ import lombok.Setter;
 @Table(name = "orders")
 public class Order {
     @EmbeddedId
-    private OrderId orderID;
+    private OrderId orderId;
 
     private String name;
 }
