@@ -25,6 +25,7 @@
         <module>spring-cache</module>
         <module>spring-mvc-nonboot</module>
         <module>spring-data-jpa</module>
+        <module>spring-data-jpa-composite-pk</module>
         <module>spring-rest</module>
         <module>spring-docker</module>
         <module>spring-swagger</module>
