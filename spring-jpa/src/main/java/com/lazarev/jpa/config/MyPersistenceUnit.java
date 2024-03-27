@@ -1,11 +1,17 @@
 package com.lazarev.jpa.config;
 
+import com.lazarev.jpa.relations.onetomany.Department;
+import com.lazarev.jpa.relations.onetomany.Employee;
+import com.lazarev.jpa.relations.onetoone.Passport;
+import com.lazarev.jpa.relations.onetoone.Person;
+import com.mysql.cj.jdbc.Driver;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.SharedCacheMode;
 import jakarta.persistence.ValidationMode;
 import jakarta.persistence.spi.ClassTransformer;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 import jakarta.persistence.spi.PersistenceUnitTransactionType;
+import org.hibernate.cfg.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -34,15 +40,18 @@ public class MyPersistenceUnit implements PersistenceUnitInfo {
     @Override
     public List<String> getManagedClassNames() {
         return List.of(
-                "com.lazarev.jpa.relations.onetoone.Person",
-                "com.lazarev.jpa.relations.onetoone.Passport");
+                Person.class.getName(),
+                Passport.class.getName(),
+                Department.class.getName(),
+                Employee.class.getName()
+        );
     }
 
     @Override
     public DataSource getNonJtaDataSource() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/lessonhibernate");
+        dataSource.setDriverClassName(Driver.class.getName());
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/lesson");
         dataSource.setUsername("root");
         dataSource.setPassword("rootroot");
         return dataSource;
@@ -85,7 +94,10 @@ public class MyPersistenceUnit implements PersistenceUnitInfo {
 
     @Override
     public Properties getProperties() {
-        return null;
+        Properties properties = new Properties();
+        properties.put(Environment.HBM2DDL_AUTO, "update");
+        properties.put(Environment.SHOW_SQL, "true");
+        return properties;
     }
 
     @Override
@@ -99,7 +111,8 @@ public class MyPersistenceUnit implements PersistenceUnitInfo {
     }
 
     @Override
-    public void addTransformer(ClassTransformer classTransformer) {}
+    public void addTransformer(ClassTransformer classTransformer) {
+    }
 
     @Override
     public ClassLoader getNewTempClassLoader() {

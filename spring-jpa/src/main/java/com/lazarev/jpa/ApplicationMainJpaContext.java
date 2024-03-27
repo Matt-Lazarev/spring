@@ -59,15 +59,17 @@ public class ApplicationMainJpaContext {
 
 
         /* Refresh */
-        entityManager.getTransaction().begin();
+//        entityManager.getTransaction().begin();
+//
+//        //Load in context
+//        Person person = entityManager.find(Person.class, 1);
+//        person.setName("Bob");
+//
+//        entityManager.refresh(person);
+//
+//        entityManager.getTransaction().commit();
 
-        //Load in context
-        Person person = entityManager.find(Person.class, 1);
-        person.setName("Bob");
 
-        entityManager.refresh(person);
-
-        entityManager.getTransaction().commit();
         entityManager.close();
     }
 }

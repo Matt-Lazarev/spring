@@ -16,17 +16,9 @@ public class ApplicationMainSetup {
         try {
             entityManager = factory.createEntityManager();
             entityManager.getTransaction().begin();
-//
-//            Person person = new Person(null, "Kate");
-//            Passport passport = new Passport(null, 1234, 56);
-//            person.setPassport(passport);
-//            entityManager.persist(person);
 
-            Passport passport = entityManager.find(Passport.class, 1);
-            System.out.println(passport.getSeries());
-
-            Person person = entityManager.find(Person.class, 1);
-            System.out.println(person.getName());
+            Person person = new Person(null, "Kate");
+            entityManager.persist(person);
 
             entityManager.getTransaction().commit();
         }

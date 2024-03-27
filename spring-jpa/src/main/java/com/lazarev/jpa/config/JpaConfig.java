@@ -13,13 +13,13 @@ import java.util.Map;
 @ComponentScan("com.lazarev.jpa")
 public class JpaConfig {
 
-    @Primary
     @Bean
     public EntityManagerFactory entityManagerFactory(){
         return Persistence.createEntityManagerFactory("my-persistence-unit");
     }
 
     @Bean
+    @Primary
     public EntityManagerFactory entityManagerFactoryJavaCode(MyPersistenceUnit persistenceUnit){
         PersistenceUnitInfoDescriptor puid =
                 new PersistenceUnitInfoDescriptor(persistenceUnit);

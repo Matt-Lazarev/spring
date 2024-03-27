@@ -50,8 +50,7 @@ public class ApplicationMainCascadeTypes {
 //        entityManager.remove(department);
 //
 //        entityManager.getTransaction().commit();
-//        entityManager.close();
 
-
+        entityManager.close();
     }
 }
