@@ -7,7 +7,7 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 import javax.servlet.ServletContext;
 
 @Configuration
-public class WebInitializer implements WebApplicationInitializer{
+public class WebInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext context) {
         registerHiddenFieldFilter(context);
