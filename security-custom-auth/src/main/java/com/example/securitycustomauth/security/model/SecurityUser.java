@@ -28,7 +28,7 @@ public class SecurityUser implements UserDetails {
         return applicationUser.getRoles()
                 .stream()
                 .map(SecurityRole::new)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
