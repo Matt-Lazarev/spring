@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    master:
+      jdbc-url: jdbc:postgresql://localhost:5433/master_db
+      username: postgres
+      password: root
+      driver-class-name: org.postgresql.Driver
+    replica:
+      jdbc-url: jdbc:postgresql://localhost:5434/master_db
+      username: postgres
+      password: root
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true

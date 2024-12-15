@@ -1,0 +1,21 @@
+spring:
+  application.name: redis-cache-jedis
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/study
+    username: lazarev
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+    open-in-view: false
+
+
+  data:
+    redis:
+      port: 6379
+      host: localhost

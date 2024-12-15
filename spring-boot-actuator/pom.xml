@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lazarev</groupId>
-    <artifactId>spring-actuator</artifactId>
+    <artifactId>spring-boot-actuator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-actuator</name>
     <description>spring-actuator</description>

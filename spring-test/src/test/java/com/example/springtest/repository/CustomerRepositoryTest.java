@@ -37,7 +37,11 @@ class CustomerRepositoryTest {
     void destroy(){
         entityManager.clear();
         entityManager
-                .createNativeQuery("TRUNCATE TABLE customers RESTART IDENTITY")
+                .createNativeQuery(
+                """
+                DELETE FROM customers;
+                ALTER TABLE customers ALTER COLUMN id RESTART WITH 1;
+                """)
                 .executeUpdate();
     }
 

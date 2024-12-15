@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    template:
+      default-topic: 'temp_t'
+    consumer:
+      enable-auto-commit: false
+      isolation-level: read_committed
+      auto-offset-reset: earliest
+      group-id: "messages-group-1"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      transaction-id-prefix: tx-
+      properties:
+        enable.idempotence: true
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+logging.level:
+  org.springframework.transaction: trace
+  org.springframework.kafka: debug

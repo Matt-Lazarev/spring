@@ -1,0 +1,8 @@
+spring:
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    template:
+      default-topic: 't_messages'
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+calculator-service:
+  endpoint: http://localhost:8080/api/calculator
+  connectTimeout: 1000
+  readTimeout: 10000

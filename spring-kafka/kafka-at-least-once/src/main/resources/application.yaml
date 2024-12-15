@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    template:
+      default-topic: 'temp_t'
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: "messages-group-1"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+logging.level:
+  org.springframework.kafka: debug

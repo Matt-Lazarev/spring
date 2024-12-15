@@ -1,0 +1,19 @@
+server.port: 8081
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/polling
+    username: lazarev
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+
+rest-clients:
+  task-client:
+    host: http://localhost:8080
+    create-task-url: /api/tasks
+    get-task-url: /api/tasks/{id}

@@ -1,0 +1,13 @@
+package com.lazarev.rediscachejedis;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RedisCacheJedisApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RedisCacheJedisApplication.class, args);
+    }
+
+}
