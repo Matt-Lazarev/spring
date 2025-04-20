@@ -20,7 +20,7 @@
         <module>spring-webhook</module>
         <module>spring-polling</module>
         <module>spring-thrift</module>
-sm        <module>spring-grpc</module>
+        <module>spring-grpc</module>
         <module>spring-websocket</module>
     </modules>
 

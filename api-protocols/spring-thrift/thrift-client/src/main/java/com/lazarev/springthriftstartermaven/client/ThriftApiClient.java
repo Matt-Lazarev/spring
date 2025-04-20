@@ -5,7 +5,6 @@ import com.lazarev.thrift.service.calculator.CalculatorService;
 import com.lazarev.thrift.service.samples.Person;
 import com.lazarev.thrift.service.samples.TPersonInfo;
 import info.developerblog.spring.thrift.annotation.ThriftClient;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -46,7 +45,6 @@ public class ThriftApiClient {
         try {
             Person person = new Person();
             person.setName("Mike");
-            person.setNickname("Michael");
             person.setValue(30);
             person.setAgreement(true);
             personInfoClient.sendInfo(person);
