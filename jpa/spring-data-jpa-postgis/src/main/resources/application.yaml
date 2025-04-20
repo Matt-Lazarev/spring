@@ -1,0 +1,14 @@
+spring:
+  application.name: spring-data-jpa-postgis
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgis
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true

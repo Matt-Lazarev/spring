@@ -5,3 +5,8 @@ calculator-service:
   endpoint: http://localhost:8080/api/calculator
   connectTimeout: 1000
   readTimeout: 10000
+
+person-info-service:
+  endpoint: http://localhost:8080/api/person
+  connectTimeout: 1000
+  readTimeout: 10000

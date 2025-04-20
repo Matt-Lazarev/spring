@@ -4,8 +4,6 @@ import com.lazarev.thrift.service.calculator.CalculatorResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Service

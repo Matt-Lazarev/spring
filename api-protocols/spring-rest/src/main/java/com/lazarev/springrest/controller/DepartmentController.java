@@ -43,8 +43,8 @@ public class DepartmentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateDepartment(@PathVariable Integer id,
-                                              @RequestBody DepartmentDto departmentDto) {
-         departmentService.updateDepartment(id, departmentDto);
+                                                 @RequestBody DepartmentDto departmentDto) {
+        departmentService.updateDepartment(id, departmentDto);
         return ResponseEntity.ok().build();
     }
 
@@ -56,14 +56,14 @@ public class DepartmentController {
 
     @PostMapping("/{departmentId}/employees")
     public ResponseEntity<Void> createEmployeeInDepartment(@PathVariable Integer departmentId,
-                                                        @RequestBody EmployeeDto employeeDto) {
+                                                           @RequestBody EmployeeDto employeeDto) {
         departmentService.createEmployeeInDepartment(departmentId, employeeDto);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{departmentId}/employees/{employeeId}")
     public ResponseEntity<Void> attachDepartmentToEmployee(@PathVariable Integer departmentId,
-                                                        @PathVariable Integer employeeId) {
+                                                           @PathVariable Integer employeeId) {
         departmentService.attachDepartmentToEmployee(departmentId, employeeId);
         return ResponseEntity.ok().build();
     }

@@ -1,0 +1,18 @@
+grpc:
+  client:
+    # simple client
+    greeter-client:
+      address: "localhost:9090"
+      negotiation-type: "plaintext"
+    # server-side streaming client
+    stock-sender-client:
+      address: "localhost:9090"
+      negotiation-type: "plaintext"
+    # client-side streaming client
+    file-receiver-client:
+      address: "localhost:9090"
+      negotiation-type: "plaintext"
+    # client-side streaming client
+    chat-service-client:
+      address: "localhost:9090"
+      negotiation-type: "plaintext"

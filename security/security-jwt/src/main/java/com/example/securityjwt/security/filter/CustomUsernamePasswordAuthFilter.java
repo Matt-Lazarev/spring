@@ -2,8 +2,8 @@ package com.example.securityjwt.security.filter;
 
 import com.example.securityjwt.security.config.JwtConfig;
 import com.example.securityjwt.security.dto.AccessToken;
-import com.example.securityjwt.security.dto.UsernamePasswordAuthenticationRequest;
-import com.example.securityjwt.security.utils.JwtUtil;
+import com.example.securityjwt.security.dto.AuthRequest;
+import com.example.securityjwt.security.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -15,13 +15,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RequiredArgsConstructor
-public class CustomUsernamePasswordAuthFilter
-        extends UsernamePasswordAuthenticationFilter {
+public class CustomUsernamePasswordAuthFilter extends UsernamePasswordAuthenticationFilter {
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 
@@ -33,8 +34,7 @@ public class CustomUsernamePasswordAuthFilter
                     ("Authentication method not supported: " + request.getMethod());
         }
 
-        var authRequest = new ObjectMapper()
-                .readValue(request.getInputStream(), UsernamePasswordAuthenticationRequest.class);
+        AuthRequest authRequest = MAPPER.readValue(request.getInputStream(), AuthRequest.class);
 
         String username = authRequest.username();
         String password = authRequest.password();
@@ -52,8 +52,6 @@ public class CustomUsernamePasswordAuthFilter
         response.addHeader(JwtConfig.HEADER, accessToken);
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        new ObjectMapper()
-                .writerWithDefaultPrettyPrinter()
-                .writeValue(response.getWriter(), new AccessToken(accessToken));
+        MAPPER.writeValue(response.getWriter(), new AccessToken(accessToken));
     }
 }

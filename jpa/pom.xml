@@ -17,6 +17,7 @@
         <module>spring-data-jpa</module>
         <module>spring-data-jpa-composite-pk</module>
         <module>spring-data-jpa-flexy-pool</module>
+        <module>spring-data-jpa-postgis</module>
         <module>spring-data-rest</module>
         <module>spring-hibernate</module>
         <module>spring-jpa</module>

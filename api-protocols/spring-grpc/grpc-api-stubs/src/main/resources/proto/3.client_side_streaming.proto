@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.lazarev.grpc.stubs";
+option java_outer_classname = "ClientSideStreamingStubs";
+option java_multiple_files = true;
+
+service FileReceiver {
+  rpc GetFilesInfo (stream File) returns (FilesInfo);
+}
+
+message File {
+  string name = 1;
+  uint32 size = 2;
+}
+
+message FilesInfo {
+  uint32 count = 1;
+  uint64 totalSize = 2;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "com.lazarev.grpc.stubs";
+option java_outer_classname = "ChatServiceStubs";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+service ChatService {
+  rpc Chat (stream ChatMessage) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+  string message = 1;
+  google.protobuf.Timestamp timestamp = 2;
+}

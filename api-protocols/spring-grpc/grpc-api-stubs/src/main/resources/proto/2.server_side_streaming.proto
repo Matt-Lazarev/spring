@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "com.lazarev.grpc.stubs";
+option java_outer_classname = "ServerSideStreamingStubs";
+option java_multiple_files = true;
+
+import "google/type/money.proto";
+
+service StockSender {
+  rpc GetStocks (GetStocksRequest) returns (stream Stock);
+}
+
+message GetStocksRequest {
+  uint32 number = 1;
+}
+
+message Stock {
+  string name = 1;
+  google.type.Money money = 2;
+}

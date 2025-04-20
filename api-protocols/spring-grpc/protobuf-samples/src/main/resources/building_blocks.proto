@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+// ----------  Message  --------- //
+
+message Person {
+  int32 id = 1;
+  string name = 2;
+  repeated string tags = 3;
+}
+
+// ----------  Service  --------- //
+
+message HelloRequest {
+  string text = 1;
+}
+
+message HelloResponse {
+  string text = 1;
+}
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloResponse);
+}
+
+// ----------  Enum  --------- //
+
+enum UserStatus {
+  UNKNOWN = 0;
+  ACTIVE = 1;
+  INACTIVE = 2;
+}
+
+message User {
+  UserStatus status = 1;
+}

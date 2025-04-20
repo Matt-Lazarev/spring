@@ -34,8 +34,6 @@
         <module>api-protocols</module>
         <module>jpa</module>
         <module>security</module>
-        <module>api-protocols/spring-webhook</module>
-        <module>api-protocols/spring-polling</module>
     </modules>
 
     <properties>

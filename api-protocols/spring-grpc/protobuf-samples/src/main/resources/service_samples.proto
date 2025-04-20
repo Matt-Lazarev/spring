@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package my.proto;
+
+message Event {
+  string data = 1;
+}
+
+message SentEventResponse {
+  string data = 1;
+}
+
+// Common API
+service EventSender {
+  rpc SendEvent (Event) returns (SentEventResponse);
+}
+
+// Client-side streaming
+service EventSenderCS {
+  rpc SendEvent (stream Event) returns (SentEventResponse);
+}
+
+// Server-side streaming
+service EventSenderSS {
+  rpc SendEvent (Event) returns (stream SentEventResponse);
+}
+
+// Bidirectional streaming
+service EventSenderBS {
+  rpc SendEvent (stream Event) returns (stream SentEventResponse);
+}
